@@ -8,7 +8,7 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "pruebaTecnica",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
