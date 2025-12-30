@@ -3,5 +3,4 @@ export interface Client{
   name:string;
   country:string;
   phone:string;
-
 }

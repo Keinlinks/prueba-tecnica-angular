@@ -16,6 +16,6 @@ export class ClientListComponent {
   private readonly clientService = inject(ClientsService);
 
   async getClients(page: number, pageSize: number) {
-    let clients = await this.clientService.getClients(page, pageSize);
+    await this.clientService.getClients(page, pageSize);
   }
 }
