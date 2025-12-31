@@ -12,12 +12,11 @@ export class ClientsService {
   private readonly http = inject(HttpClient);
 
   private readonly apiUrl = environment.apiUrl;
-  constructor() {}
 
   public getClients(page: number, pageSize: number): Observable<Client[]> {
     this.logger.log(`getClients(page: ${page}, pageSize: ${pageSize})`);
     return this.http.get<Client[]>(
-      `${this.apiUrl}/clients?page=${page}&pageSize=${pageSize}`,
+      `${this.apiUrl}/clients-linq?page=${page}&pageSize=${pageSize}`,
     );
   }
 }
