@@ -5,9 +5,11 @@ import { Pipe, type PipeTransform } from '@angular/core';
   standalone: true,
 })
 export class PhonePipe implements PipeTransform {
-
   transform(value: string): string {
-    return value;
+    let result = '';
+    for (let i = 0; i < value.length; i += 4) {
+      result += value.substr(i, 4) + ' ';
+    }
+    return result.trim();
   }
-
 }

@@ -1,1 +1,8 @@
-<prueba-tecnica-client-table [dataSource]="clients"/>
+<div class="container">
+  <h1>Clients table</h1>
+  @if (clientTableData) {
+  <prueba-tecnica-client-table [dataSource]="clientTableData"
+    (changePage)="getClients($event.pageIndex + 1,$event.pageSize)" />
+  }
+
+</div>

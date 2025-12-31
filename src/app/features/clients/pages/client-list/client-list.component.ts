@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { ClientsService } from '../../services/clients.service';
 import { ClientTableComponent } from '../../components/clients-table/client-table.component';
 import { Client } from '../../models/client.model';
+import { PaginationResponse } from '@src/app/core/api/paginationResponse';
 
 @Component({
   selector: 'prueba-tecnica-client-list',
@@ -15,16 +16,22 @@ import { Client } from '../../models/client.model';
   styleUrl: './client-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ClientListComponent {
+export class ClientListComponent implements OnInit {
   private readonly clientService = inject(ClientsService);
+  private readonly cd = inject(ChangeDetectorRef)
 
-  clients:Client[] = [];
+  clientTableData!:PaginationResponse<Client[]>;
+
+  ngOnInit(): void {
+    this.getClients(1,5);
+  }
 
   async getClients(page: number, pageSize: number) {
     this.clientService.getClients(page, pageSize).subscribe({
-      next: (clients:Client[])=>{
-        this.clients = clients;
-      }
+      next: (clientTableData: PaginationResponse<Client[]>) => {
+        this.clientTableData = clientTableData;
+        this.cd.detectChanges()
+      },
     });
   }
 }
