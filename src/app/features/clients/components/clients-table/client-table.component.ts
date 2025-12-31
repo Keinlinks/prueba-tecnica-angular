@@ -15,11 +15,13 @@ import { PhonePipe } from '@src/app/shared/pipes/phone.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientTableComponent {
-  @Input() dataSource!: PaginationResponse<Client[]>;
   @Output() changePage: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
+  //Material components params
+  @Input() dataSource!: PaginationResponse<Client[]>;
   displayedColumns: string[] = ['name', 'country', 'phone'];
   pageSizeOptions = [5,10,15,20];
+
   _changePage(event: PageEvent) {
     this.changePage.emit(event);
   }
