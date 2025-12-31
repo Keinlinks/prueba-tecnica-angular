@@ -27,7 +27,7 @@ module.exports = defineConfig([
         "error",
         {
           type: "element",
-          prefix: "pruebaTecnica",
+          prefix: "prueba-tecnica",
           style: "kebab-case",
         },
       ],
